@@ -3,10 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
     </head>
     <body>
+        <div class="container">
+        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-red rounded shadow-sm">
+        <div class="mr-3 float-right" id="icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+        <div class="lh-100">
+          <h3 class="mb-0 text-white lh-100">fakepay</h3>
+          <small class="text-white">your fake payments provider</small>
+        </div>
+      </div>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        </div>
+        {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
     </body>
 </html>

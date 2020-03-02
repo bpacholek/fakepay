@@ -1,0 +1,98 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Payment not found{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <h1>Payment found</h1>
+            <p class="important">
+                Decide what to do with the payment.
+            </p>
+            <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Attribute</th>
+                <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row">Merchant Id</th>
+                <td>{{ payment.merchantId }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Merchant Key</th>
+                <td>{{ payment.merchantKey }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Currency</th>
+                <td>{{ payment.currency }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Amount</th>
+                <td>{{ payment.amount }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Return Url</th>
+                <td>{{ payment.returnUrl }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Cancel Url</th>
+                <td>{{ payment.cancelUrl }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Client Email</th>
+                <td>{{ payment.clientEmail }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Payment Id</th>
+                <td>{{ payment.merchantId }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Notify Url</th>
+                <td>{{ payment.notifyUrl }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Description</th>
+                <td>{{ payment.description }}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-sm">
+            <p>Background (between servers) operations:</p>
+            <a href="{{ path("send_notification", {id: payment.id, type: "success"}) }}" type="button" class="btn btn-success">Send `success`</a>
+            <button type="button" class="btn btn-warning">Send `pending`</button>
+            <button type="button" class="btn btn-danger">Send `failure`</button>
+        </div>
+        <div class="col-sm">
+            <p>Redirect operations (in browser, in new window) operations:</p>
+            <button type="button" class="btn btn-success">Redirect to return url</button>
+            <button type="button" class="btn btn-danger">Redirect to cancellation url</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+        {% for label, messages in app.flashes(['info']) %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        </div>
+    </div>
+    {% for label, messages in app.flashes(['response']) %}
+        {% for message in messages %}
+            <div class="row">
+                <div class="col">
+                    <pre id="response-viewer"><code>{{ message }}</code></pre>
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+  </div>
+{% endblock %}

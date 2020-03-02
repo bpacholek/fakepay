@@ -1,0 +1,27 @@
+.bg-red {
+    background-color: red;
+}
+
+#icon {
+    font-size:48px;
+    font-size: 48px;
+    line-height: 48px;
+    color: #fff;
+}
+
+div.row {
+    margin-bottom:10px;
+}
+
+#response-viewer
+{
+    border: 1px solid;
+    border-radius: 8px;
+    background: black;
+    color: rgba(22,192,12,1);
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+@import '~font-awesome';
+@import "~bootstrap/scss/bootstrap";
