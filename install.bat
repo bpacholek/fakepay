@@ -1,6 +1,7 @@
-composer install
-php bin/console doctrine:database:create
-php bin/console doctrine:schema:create
-php bin/console cache:clear
-yarn install
-yarn encore dev
+CALL composer install
+CALL php bin/console doctrine:database:create
+CALL php bin/console doctrine:schema:create
+CALL php bin/console cache:clear
+CALL yarn install
+CALL yarn encore dev
+ECHO Now run `symfony server:start`
