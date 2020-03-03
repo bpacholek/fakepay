@@ -71,8 +71,8 @@
         </div>
         <div class="col-sm">
             <p>Redirect operations (in browser, in new window) operations:</p>
-            <button type="button" class="btn btn-success">Redirect to return url</button>
-            <button type="button" class="btn btn-danger">Redirect to cancellation url</button>
+            <a href="{{ payment.returnUrl }}" class="btn btn-success">Redirect to return url</a>
+            <a href="{{ payment.cancelUrl }}" class="btn btn-danger">Redirect to cancellation url</a>
         </div>
     </div>
     <div class="row">
