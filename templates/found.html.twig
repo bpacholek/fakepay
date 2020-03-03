@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Payment not found{% endblock %}
+{% block title %}Payment found{% endblock %}
 
 {% block body %}
     <div class="row">
@@ -64,9 +64,9 @@
     <div class="row text-center">
         <div class="col-sm">
             <p>Background (between servers) operations:</p>
-            <a href="{{ path("send_notification", {id: payment.id, type: "success"}) }}" type="button" class="btn btn-success">Send `success`</a>
-            <button type="button" class="btn btn-warning">Send `pending`</button>
-            <button type="button" class="btn btn-danger">Send `failure`</button>
+            <a href="{{ path("send_notification", {id: payment.id, type: "completed"}) }}" type="button" class="btn btn-success">Send `completed`</a>
+            <a href="{{ path("send_notification", {id: payment.id, type: "pending"}) }}" type="button" class="btn btn-warning">Send `pending`</a>
+            <a href="{{ path("send_notification", {id: payment.id, type: "failed"}) }}" type="button" class="btn btn-danger">Send `failed`</a>
         </div>
         <div class="col-sm">
             <p>Redirect operations (in browser, in new window) operations:</p>

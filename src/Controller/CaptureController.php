@@ -11,7 +11,6 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\VarDumper\Cloner\Data;
 
 class CaptureController extends AbstractController
 {
@@ -34,11 +33,12 @@ class CaptureController extends AbstractController
             $entityManager->flush();
 
             //success!
-            return $this->redirectToRoute('handle_payment', ['id' => $payment->getId()]);
+            return new JsonResponse(['success' => 'true', 'redirect_to' => $this->generateUrl('handle_payment', ['id' => $payment->getId()])], Response::HTTP_OK);
         }
 
         //failure!
         $errors = $this->getErrorsFromForm($form);
+
         return new JsonResponse(['success' => 'failure', 'errors' => $errors], Response::HTTP_BAD_REQUEST);
     }
 

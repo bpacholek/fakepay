@@ -3,18 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Payment;
-use App\Form\CapturePaymentFormType;
 use App\Repository\PaymentRepository;
 use Exception;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mime\Part\DataPart;
-use Symfony\Component\Mime\Part\Multipart\FormDataPart;
 
 class HandleController extends AbstractController
 {
@@ -66,10 +61,11 @@ class HandleController extends AbstractController
                 'danger',
                 $e->getMessage()
             );
+
             return $this->redirectToRoute('handle_payment', ['id' => $payment->getId()]);
         }
 
-        $contents = $response->getContent();
+        $contents = $response->getContent(false);
         $this->addFlash(
             'info',
             'Sent, response below.',
@@ -86,5 +82,4 @@ class HandleController extends AbstractController
 
         return $this->redirectToRoute('handle_payment', ['id' => $payment->getId()]);
     }
-
 }
