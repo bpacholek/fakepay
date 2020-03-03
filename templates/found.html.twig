@@ -47,7 +47,7 @@
                 </tr>
                 <tr>
                 <th scope="row">Payment Id</th>
-                <td>{{ payment.merchantId }}</td>
+                <td>{{ payment.paymentId }}</td>
                 </tr>
                 <tr>
                 <th scope="row">Notify Url</th>
@@ -64,9 +64,10 @@
     <div class="row text-center">
         <div class="col-sm">
             <p>Background (between servers) operations:</p>
-            <a href="{{ path("send_notification", {id: payment.id, type: "completed"}) }}" type="button" class="btn btn-success">Send `completed`</a>
-            <a href="{{ path("send_notification", {id: payment.id, type: "pending"}) }}" type="button" class="btn btn-warning">Send `pending`</a>
-            <a href="{{ path("send_notification", {id: payment.id, type: "failed"}) }}" type="button" class="btn btn-danger">Send `failed`</a>
+            <a href="{{ path("send_notification", {id: payment.id, type: "completed"}) }}" type="button" class="btn btn-success">`completed`</a>
+            <a href="{{ path("send_notification", {id: payment.id, type: "pending"}) }}" type="button" class="btn btn-warning">`pending`</a>
+            <a href="{{ path("send_notification", {id: payment.id, type: "failed"}) }}" type="button" class="btn btn-danger">`failed`</a>
+            <a href="{{ path("send_notification", {id: payment.id, type: "canceled"}) }}" type="button" class="btn btn-dark">`canceled`</a>
         </div>
         <div class="col-sm">
             <p>Redirect operations (in browser, in new window) operations:</p>
